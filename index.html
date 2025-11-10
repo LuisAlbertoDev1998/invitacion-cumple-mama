@@ -1,71 +1,62 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Invitación - Patricia Ramírez Roque</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Invitación - Patricia Ramírez Roque</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- fondo y decorativos -->
-  <div class="page-bg"></div>
-  <div class="decor-top"></div>
+<div class="container">
 
-  <main class="wrap">
-    <header class="hero">
-      <div class="hero-card">
-        <!-- título con brillo -->
-        <h1 class="title">Invitación Especial</h1>
+  <header class="hero">
+    <div class="card">
+      <div class="corner corner-top-left"></div>
+      <div class="corner corner-top-right"></div>
+      <div class="corner corner-bottom-left"></div>
+      <div class="corner corner-bottom-right"></div>
 
-        <!-- foto redonda -->
-        <img src="patricia.jpg">
-
-        <!-- nombre y dedicatoria -->
-        <h2 class="name">Patricia Ramírez Roque</h2>
-        <p class="dedicatoria">"¡Acompáñenos a celebrar los 65 años de Patricia! Nos encantaría contar con su presencia para compartir juntos este momento tan especial."</p>
-
-        <!-- detalles -->
-        <div class="meta">
-          <div class="meta-item">📅 <strong>Domingo 16 de noviembre de 2025</strong> — 3:30 PM</div>
-          <div class="meta-item">📍 Avenida Emiliano Zapata, Col. Concepción la Cruz 11, San Bernardino Tlaxcalancingo, Pue.</div>
+      <div class="hero-content fade-in">
+        <div class="title-wrap">
+          <div class="ribbon"></div>
+          <h1 class="golden-glow">🎉 Invitación Especial 🎉</h1>
+          <div class="flowers left"></div>
+          <div class="flowers right"></div>
         </div>
 
-        <!-- mapa en tarjeta glass -->
-        <div class="mapa glass">
+        <img src="img/patricia.png" alt="Patricia Ramírez Roque" class="photo fade-in">
+
+        <h2 class="fade-in">Patricia Ramírez Roque</h2>
+        <p class="sub fade-in">
+          "¡Acompáñenos a celebrar los 65 años de Patricia! 🎉 Nos encantaría contar con su presencia para compartir juntos este momento tan especial."
+        </p>
+
+        <p class="when fade-in"><strong>📅 Domingo 16 de noviembre de 2025 — 3:30 PM</strong></p>
+        <p class="where fade-in">📍 Avenida Emiliano Zapata, Colonia Concepción la Cruz 11, Concepción la Cruz, 72197 San Bernardino Tlaxcalancingo, Pue.</p>
+
+        <div class="mapa fade-in">
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60352.23907591116!2d-98.225059573291!3d19.019063225682437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfc71d62a6a829%3A0xbddb59af379cc1ea!2sTorre%20Artea!5e0!3m2!1ses!2smx!4v1762740768329!5m2!1ses!2smx" 
-            width="100%" height="320" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            width="100%" 
+            height="350" 
+            style="border:0; border-radius: 15px;" 
+            allowfullscreen="" 
+            loading="lazy">
+          </iframe>
         </div>
-
-        <!-- contador -->
-        <section class="countdown glass">
-          <h3>Cuenta regresiva</h3>
-          <div id="countdown" class="countgrid">
-            <div class="unit"><span id="dias">--</span><small>días</small></div>
-            <div class="unit"><span id="horas">--</span><small>horas</small></div>
-            <div class="unit"><span id="minutos">--</span><small>minutos</small></div>
-            <div class="unit"><span id="segundos">--</span><small>segundos</small></div>
-          </div>
-        </section>
-
       </div>
-    </header>
-  </main>
 
-  <!-- reproductor discreto flotante -->
-  <div class="audio-float" id="audioFloat" title="Reproducir / Pausar (clic)">
-    <button id="playBtn" aria-label="Play/Pause">▶</button>
-    <audio id="player" loop>
-      <source src="senora_senora.mp3" type="audio/mpeg">
-      Tu navegador no soporta audio.
-    </audio>
-  </div>
+      <footer class="footer fade-in">
+        <audio id="player" controls loop>
+          <source src="senora_senora.mp3" />
+        </audio>
+      </footer>
 
-  <!-- corazones suaves -->
-  <div id="hearts"></div>
+    </div>
+  </header>
+</div>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
 

@@ -1,55 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Invitación - Patricia Ramírez Roque</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Invitación - Patricia Ramírez Roque</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <header class="hero" style="background-image: url('img/fondo.jpg');">
-        <div class="overlay"></div>
-        <div class="hero-content">
-            <h1>🎉 Invitación Especial 🎉</h1>
-            <img src="patricia.jpg">
-            <h2>Patricia Ramírez Roque</h2>
-            <p class="sub">"¡Acompáñenos a celebrar los 65 años de Patricia! 🎉 Nos encantaría contar con su presencia para compartir juntos este momento tan especial"</p>
-            <p class="when"><strong>📅 Domingo 16 de noviembre de 2025 — 3:30 PM</strong></p>
-            <p class="where">📍 Avenida Emiliano Zapata, Colonia Concepción la Cruz 11, Concepción la Cruz, 72197 San Bernardino Tlaxcalancingo, Pue.</p>
-            <div class="mapa">
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60352.23907591116!2d-98.225059573291!3d19.019063225682437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfc71d62a6a829%3A0xbddb59af379cc1ea!2sTorre%20Artea!5e0!3m2!1ses!2smx!4v1762740768329!5m2!1ses!2smx" 
-        width="100%" 
-        height="400" 
-        style="border:0; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-</div>
+  <!-- fondo y decorativos -->
+  <div class="page-bg"></div>
+  <div class="decor-top"></div>
+
+  <main class="wrap">
+    <header class="hero">
+      <div class="hero-card">
+        <!-- título con brillo -->
+        <h1 class="title">Invitación Especial</h1>
+
+        <!-- foto redonda -->
+        <img src="img/patricia.jpg" alt="Patricia Ramírez Roque" class="foto-invitada">
+
+        <!-- nombre y dedicatoria -->
+        <h2 class="name">Patricia Ramírez Roque</h2>
+        <p class="dedicatoria">"¡Acompáñenos a celebrar los 65 años de Patricia! Nos encantaría contar con su presencia para compartir juntos este momento tan especial."</p>
+
+        <!-- detalles -->
+        <div class="meta">
+          <div class="meta-item">📅 <strong>Domingo 16 de noviembre de 2025</strong> — 3:30 PM</div>
+          <div class="meta-item">📍 Avenida Emiliano Zapata, Col. Concepción la Cruz 11, San Bernardino Tlaxcalancingo, Pue.</div>
         </div>
+
+        <!-- mapa en tarjeta glass -->
+        <div class="mapa glass">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60352.23907591116!2d-98.225059573291!3d19.019063225682437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfc71d62a6a829%3A0xbddb59af379cc1ea!2sTorre%20Artea!5e0!3m2!1ses!2smx!4v1762740768329!5m2!1ses!2smx" 
+            width="100%" height="320" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <!-- contador -->
+        <section class="countdown glass">
+          <h3>Cuenta regresiva</h3>
+          <div id="countdown" class="countgrid">
+            <div class="unit"><span id="dias">--</span><small>días</small></div>
+            <div class="unit"><span id="horas">--</span><small>horas</small></div>
+            <div class="unit"><span id="minutos">--</span><small>minutos</small></div>
+            <div class="unit"><span id="segundos">--</span><small>segundos</small></div>
+          </div>
+        </section>
+
+      </div>
     </header>
+  </main>
 
-    <main class="main">
-        <section class="countdown">
-            <h3>Cuenta regresiva</h3>
-            <div id="countdown">
-                <div><span id="dias">--</span><small>días</small></div>
-                <div><span id="horas">--</span><small>horas</small></div>
-                <div><span id="minutos">--</span><small>minutos</small></div>
-                <div><span id="segundos">--</span><small>segundos</small></div>
-            </div>
-    </main>
+  <!-- reproductor discreto flotante -->
+  <div class="audio-float" id="audioFloat" title="Reproducir / Pausar (clic)">
+    <button id="playBtn" aria-label="Play/Pause">▶</button>
+    <audio id="player" loop>
+      <source src="senora_senora.mp3" type="audio/mpeg">
+      Tu navegador no soporta audio.
+    </audio>
+  </div>
 
-    <footer class="footer">
-        <div class="player">
-            <audio id="player" controls loop>
-                <source src="senora_senora.mp3" />
-            </audio>
-        </div>
-    </footer
-</div>
-<script src="script.js"></script>
+  <!-- corazones suaves -->
+  <div id="hearts"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
+

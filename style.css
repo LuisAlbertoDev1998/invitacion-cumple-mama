@@ -6,3 +6,9 @@ body{margin:0;font-family:sans-serif;background:#ffeef2;color:#333;text-align:ce
 button{background:#ff66a3;border:none;padding:10px 20px;border-radius:10px;color:white;cursor:pointer;}
 .hidden{display:none;}
 .footer{background:#ffe6eb;padding:20px;margin-top:40px;}
+.mapa {
+  margin: 20px auto;
+  max-width: 800px;
+  border-radius: 15px;
+  overflow: hidden;
+}

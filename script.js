@@ -1,44 +1,72 @@
-document.addEventListener("DOMContentLoaded",()=>{
-const evento=new Date("Nov 16, 2025 18:00:00").getTime();
-const d=document;
-function actualizar(){
- const ahora=new Date().getTime();
- const dist=evento-ahora;
- const dias=Math.floor(dist/(1000*60*60*24));
- const horas=Math.floor((dist%(1000*60*60*24))/(1000*60*60));
- const minutos=Math.floor((dist%(1000*60*60))/(1000*60));
- const segundos=Math.floor((dist%(1000*60))/1000);
- d.getElementById("dias").innerText=dias;
- d.getElementById("horas").innerText=horas;
- d.getElementById("minutos").innerText=minutos;
- d.getElementById("segundos").innerText=segundos;
+// ===== Contador =====
+const eventDate = new Date('2025-11-16T15:30:00'); // hora local del evento
+function updateCountdown(){
+  const now = new Date();
+  let diff = eventDate - now;
+  if(diff < 0) diff = 0;
+  const dias = Math.floor(diff / (1000*60*60*24));
+  const horas = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  const minutos = Math.floor((diff % (1000*60*60)) / (1000*60));
+  const segundos = Math.floor((diff % (1000*60)) / 1000);
+  document.getElementById('dias').innerText = dias;
+  document.getElementById('horas').innerText = String(horas).padStart(2,'0');
+  document.getElementById('minutos').innerText = String(minutos).padStart(2,'0');
+  document.getElementById('segundos').innerText = String(segundos).padStart(2,'0');
 }
-setInterval(actualizar,1000);
-const form=d.getElementById("rsvpForm");
-const lista=d.getElementById("listaRespuestas");
-const gracias=d.getElementById("gracias");
-const reset=d.getElementById("reset");
-function mostrarRespuestas(){
- lista.innerHTML="";
- const datos=JSON.parse(localStorage.getItem("rsvps")||"[]");
- datos.forEach(e=>{const li=d.createElement("li");li.textContent=`${e.nombre} - ${e.asistencia} (${e.mensaje})`;lista.appendChild(li);});
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+// ===== audio play/pause discreet =====
+const player = document.getElementById('player');
+const playBtn = document.getElementById('playBtn');
+const audioFloat = document.getElementById('audioFloat');
+
+function setPlayUI(isPlaying){
+  playBtn.textContent = isPlaying ? '❚❚' : '▶';
 }
-form.addEventListener("submit",e=>{e.preventDefault();
- const nombre=d.getElementById("nombreInput").value;
- const asistencia=d.getElementById("asistencia").value;
- const mensaje=d.getElementById("mensajeInput").value;
- const datos=JSON.parse(localStorage.getItem("rsvps")||"[]");
- datos.push({nombre,asistencia,mensaje});
- localStorage.setItem("rsvps",JSON.stringify(datos));
- form.classList.add("hidden");gracias.classList.remove("hidden");mostrarRespuestas();
+playBtn.addEventListener('click',(e)=>{
+  e.stopPropagation();
+  if(player.paused){ player.play().catch(()=>{}); setPlayUI(true); }
+  else{ player.pause(); setPlayUI(false); }
 });
-reset.addEventListener("click",()=>{gracias.classList.add("hidden");form.classList.remove("hidden");});
-mostrarRespuestas();
-const player=d.getElementById("player");
-const autoplay=d.getElementById("autoplay");
-autoplay.addEventListener("change",()=>{if(autoplay.checked){player.play();}});
-});
-window.addEventListener('click', () => {
-  const player = document.getElementById('player');
-  if (player.paused) player.play();
-}, { once: true });
+
+// allow single user gesture to autoplay: click anywhere once to enable
+let gestureAdded = false;
+function enableOnFirstGesture(){
+  if(gestureAdded) return;
+  gestureAdded = true;
+  window.addEventListener('click', function once(){
+    player.play().then(()=> setPlayUI(true)).catch(()=>{} );
+    window.removeEventListener('click', once);
+  });
+}
+enableOnFirstGesture();
+
+// ===== corazones flotantes suaves =====
+const heartsContainer = document.getElementById('hearts');
+function createHeart(){
+  const heart = document.createElement('div');
+  heart.textContent = '💖';
+  heart.style.position = 'absolute';
+  heart.style.left = Math.random()*100 + 'vw';
+  heart.style.bottom = '-40px';
+  heart.style.fontSize = (12 + Math.random()*20) + 'px';
+  heart.style.opacity = 0.85;
+  heart.style.transition = 'transform 6s linear, opacity 6s linear';
+  heartsContainer.appendChild(heart);
+  // trigger animation
+  requestAnimationFrame(()=> {
+    heart.style.transform = `translateY(-110vh) translateX(${(Math.random()-0.5)*20}vw)`;
+    heart.style.opacity = 0;
+  });
+  setTimeout(()=> heart.remove(), 6500);
+}
+// create hearts occasionally for soft effect
+setInterval(()=> {
+  if(Math.random() < 0.6) createHeart();
+}, 800);
+
+// small accessibility: pause hearts on mobile to save CPU
+if(window.innerWidth < 600){
+  clearInterval();
+}

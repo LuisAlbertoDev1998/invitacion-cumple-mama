@@ -38,3 +38,7 @@ const player=d.getElementById("player");
 const autoplay=d.getElementById("autoplay");
 autoplay.addEventListener("change",()=>{if(autoplay.checked){player.play();}});
 });
+window.addEventListener('click', () => {
+  const player = document.getElementById('player');
+  if (player.paused) player.play();
+}, { once: true });

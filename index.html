@@ -4,8 +4,190 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Invitación - Patricia Ramírez Roque</title>
-  <link rel="stylesheet" href="style.css">
+  
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Tipografías y Variables ===== */
+    :root{
+      --gold-1: #e6c07a;
+      --gold-2: #ffd77a;
+      --white: #fffdfc;
+      --cream: #fff8f0;
+      --text: #3b2f2f;
+      --glass: rgba(255,255,255,0.6);
+      --shadow: 0 12px 30px rgba(34,30,30,0.12);
+    }
+
+    *{box-sizing:border-box}
+    
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,#fbf7f1,#fffbf9);
+    }
+
+    /* fondo decorativo */
+    .page-bg{
+      position:fixed;inset:0;
+      background: radial-gradient(ellipse at top left, rgba(255,220,150,0.10), transparent 20%),
+                  radial-gradient(ellipse at bottom right, rgba(255,200,120,0.08), transparent 20%);
+      z-index:0;
+      pointer-events:none;
+    }
+
+    /* Contenedor principal - ESTILOS MÓVIL (Base) */
+    .wrap{
+      min-height:100vh;
+      width: 100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 20px 16px; /* Padding más pequeño para móviles */
+      z-index:1;
+      position:relative
+    }
+
+    /* Tarjeta principal - ESTILOS MÓVIL (Base) */
+    .hero-card{
+      width:100%;
+      max-width:980px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,250,240,0.92));
+      border-radius:18px;
+      padding: 22px; /* Padding más pequeño para móviles */
+      box-shadow: var(--shadow);
+      border: 2px solid transparent;
+      position:relative;
+      overflow:visible;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute;inset:-3px;border-radius:20px;
+      background: linear-gradient(90deg,var(--gold-1),var(--gold-2),#f6e6b0);
+      z-index:-1;
+      filter:blur(8px);
+      opacity:0.9;
+    }
+
+    /* Título - ESTILOS MÓVIL (Base) */
+    .title{
+      font-family:'Great Vibes',cursive;
+      font-size: 2.4rem; /* Tamaño más pequeño para móviles */
+      margin:0;
+      color: #8b5a2b;
+      text-align:center;
+      letter-spacing:1px;
+      text-shadow: 0 6px 18px rgba(139,90,43,0.12);
+      position:relative;
+      display:block; /* Hacemos que ocupe todo el ancho para centrarlo bien */
+      padding:6px 18px;
+    }
+    .title::after{
+      content:"";
+      position:absolute;left:0;right:0;bottom:-6px;height:8px;
+      background:linear-gradient(90deg, rgba(255,255,255,0.25), rgba(255,255,255,0));
+      transform:skewX(-12deg);
+      opacity:0.6;
+      border-radius:6px;
+      animation: shimmer 3.8s linear infinite;
+    }
+    @keyframes shimmer{ 0%{opacity:0.2}50%{opacity:1}100%{opacity:0.2} }
+
+    /* Foto - ESTILOS MÓVIL (Base) */
+    .foto-invitada{
+      display:block;
+      width: 140px; /* Tamaño más pequeño para móviles */
+      height: 140px; /* Tamaño más pequeño para móviles */
+      object-fit:cover;
+      border-radius:50%;
+      margin:18px auto 8px;
+      border:8px solid var(--white);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      transition: transform .45s ease, box-shadow .45s ease;
+    }
+    .foto-invitada:hover{ transform:scale(1.03); box-shadow: 0 12px 34px rgba(0,0,0,0.18); }
+
+    /* Nombre y dedicatoria */
+    .name{font-size:1.8rem;margin:8px 0 6px;text-align:center;font-weight:700;color:#422f20}
+    .dedicatoria{max-width:840px;margin:0 auto 14px;text-align:center;font-style:italic;color:#5a4338}
+
+    /* Detalles */
+    .meta{display:flex;flex-direction:column;gap:8px;align-items:center;margin:8px 0 18px;color:#5c4133;font-weight:600; text-align: center;}
+    .meta-item{display:flex;align-items:center;gap:8px}
+
+    /* Estilo Glass */
+    .glass{
+      background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.70));
+      border-radius:12px;
+      padding:14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      border: 1px solid rgba(255,255,255,0.6);
+      margin:16px auto;
+    }
+
+    /* Mapa */
+    .mapa{max-width:860px;overflow:hidden;border-radius:12px}
+    .mapa iframe {
+      display: block; /* Previene espacios fantasma */
+    }
+
+    /* Contador - ESTILOS MÓVIL (Base) */
+    .countdown{max-width:760px;margin-top:6px;text-align:center}
+    .countdown h3{color:#8b5a2b;margin:0 0 10px;font-weight:700}
+    .countgrid{display:flex;justify-content:center;gap: 12px; /* Gap más pequeño para móviles */ flex-wrap:wrap}
+    .unit{
+      background:linear-gradient(180deg,#fff,#fff6f3);
+      min-width: 72px; /* Ancho más pequeño para móviles */
+      border-radius:12px;
+      padding: 14px; /* Padding más pequeño para móviles */
+      box-shadow:0 8px 18px rgba(139,90,43,0.06)
+    }
+    .unit span{display:block;font-size:1.8rem;font-weight:700;color:#b85d14}
+    .unit small{display:block;color:#6b4d3f;margin-top:6px;opacity:0.9}
+
+    /* Botón flotante de audio */
+    .audio-float{position:fixed;right:22px;bottom:22px;background:linear-gradient(180deg,var(--gold-2),var(--gold-1));width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 26px rgba(0,0,0,0.18);z-index:999;cursor:pointer}
+    .audio-float button{all:unset;font-size:18px;color:#fff;margin-left:2px;cursor:pointer}
+    .audio-float:hover{transform:translateY(-4px);transition:transform .18s ease}
+
+    /* Corazones */
+    #hearts{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+
+    /* subtle page entrance */
+    .wrap, .hero-card, .glass, .foto-invitada, .title, .name{animation: fadeUp .6s ease both}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+
+    /* ===== ESTILOS DESKTOP ===== */
+    /* Se aplican solo si la pantalla es MÁS GRANDE de 720px */
+    @media (min-width: 720px) {
+      .wrap {
+        padding: 40px 24px; /* Padding original para desktop */
+      }
+      .hero-card {
+        padding: 38px; /* Padding original para desktop */
+      }
+      .title {
+        font-size: 3.2rem; /* Tamaño original para desktop */
+      }
+      .foto-invitada {
+        width: 180px; /* Tamaño original para desktop */
+        height: 180px; /* Tamaño original para desktop */
+      }
+      .countgrid {
+        gap: 16px; /* Gap original para desktop */
+      }
+      .unit {
+        min-width: 96px; /* Ancho original para desktop */
+        padding: 18px 14px; /* Padding original para desktop */
+      }
+    }
+    
+    /* ===== (Estilos de Asistente Gemini eliminados) ===== */
+
+  </style>
 </head>
 <body>
   <!-- fondo y decorativos -->
@@ -18,8 +200,8 @@
         <!-- título con brillo -->
         <h1 class="title">Invitación Especial</h1>
 
-        <!-- foto redonda -->
-        <img src="patricia.jpg">
+        <!-- foto redonda (CORREGIDO: placeholder y clase añadida) -->
+        <img src="https://placehold.co/180x180/E6C07A/422f20?text=Patricia" alt="Foto de Patricia Ramírez Roque" class="foto-invitada">
 
         <!-- nombre y dedicatoria -->
         <h2 class="name">Patricia Ramírez Roque</h2>
@@ -34,7 +216,8 @@
         <!-- mapa en tarjeta glass -->
         <div class="mapa glass">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60352.23907591116!2d-98.225059573291!3d19.019063225682437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfc71d62a6a829%3A0xbddb59af379cc1ea!2sTorre%20Artea!5e0!3m2!1ses!2smx!4v1762740768329!5m2!1ses!2smx" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60352.23907591116!2d-98.225059573291!3d19.019063225682437!2m3!1f0!2f0!3f0!3m2!1i1024!
+            i768!4f13.1!3m3!1m2!1s0x85cfc71d62a6a829%3A0xbddb59af379cc1ea!2sTorre%20Artea!5e0!3m2!1ses!2smx!4v1762740768329!5m2!1ses!2smx" 
             width="100%" height="320" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
@@ -49,6 +232,8 @@
           </div>
         </section>
 
+        <!-- ===== (Sección de Asistente Gemini eliminada) ===== -->
+
       </div>
     </header>
   </main>
@@ -57,7 +242,8 @@
   <div class="audio-float" id="audioFloat" title="Reproducir / Pausar (clic)">
     <button id="playBtn" aria-label="Play/Pause">▶</button>
     <audio id="player" loop>
-      <source src="senora_senora.mp3" type="audio/mpeg">
+      <!-- NOTA: La fuente de audio original 'senora_senora.mp3' no está incluida. El reproductor aparecerá pero no funcionará sin un archivo de audio válido. -->
+      <!-- <source src="senora_senora.mp3" type="audio/mpeg"> -->
       Tu navegador no soporta audio.
     </audio>
   </div>
@@ -65,6 +251,109 @@
   <!-- corazones suaves -->
   <div id="hearts"></div>
 
-  <script src="script.js"></script>
+  <!-- ===== (Modal de Gemini eliminado) ===== -->
+
+
+  <script>
+    // ===== Contador =====
+    const eventDate = new Date('2025-11-16T15:30:00'); // hora local del evento
+    function updateCountdown(){
+      const now = new Date();
+      let diff = eventDate - now;
+      if(diff < 0) diff = 0;
+      const dias = Math.floor(diff / (1000*60*60*24));
+      const horas = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      const minutos = Math.floor((diff % (1000*60*60)) / (1000*60));
+      const segundos = Math.floor((diff % (1000*60)) / 1000);
+      
+      const elDias = document.getElementById('dias');
+      const elHoras = document.getElementById('horas');
+      const elMinutos = document.getElementById('minutos');
+      const elSegundos = document.getElementById('segundos');
+
+      if(elDias) elDias.innerText = dias;
+      if(elHoras) elHoras.innerText = String(horas).padStart(2,'0');
+      if(elMinutos) elMinutos.innerText = String(minutos).padStart(2,'0');
+      if(elSegundos) elSegundos.innerText = String(segundos).padStart(2,'0');
+    }
+    // Iniciar contador y actualizar cada segundo
+    updateCountdown();
+    const countdownInterval = setInterval(updateCountdown,1000);
+
+    // ===== audio play/pause discreet =====
+    const player = document.getElementById('player');
+    const playBtn = document.getElementById('playBtn');
+    const audioFloat = document.getElementById('audioFloat');
+
+    function setPlayUI(isPlaying){
+      if(playBtn) playBtn.textContent = isPlaying ? '❚❚' : '▶';
+    }
+    
+    if(playBtn){
+      playBtn.addEventListener('click',(e)=>{
+        e.stopPropagation();
+        if(player.paused){ player.play().catch(()=>{}); setPlayUI(true); }
+        else{ player.pause(); setPlayUI(false); }
+      });
+    }
+
+    // allow single user gesture to autoplay: click anywhere once to enable
+    let gestureAdded = false;
+    function enableOnFirstGesture(){
+      if(gestureAdded) return;
+      gestureAdded = true;
+      function once(){
+        player.play().then(()=> setPlayUI(true)).catch(()=>{} );
+        window.removeEventListener('click', once);
+      }
+      window.addEventListener('click', once);
+    }
+    enableOnFirstGesture();
+
+    // ===== corazones flotantes suaves =====
+    const heartsContainer = document.getElementById('hearts');
+    function createHeart(){
+      if (!heartsContainer) return;
+      const heart = document.createElement('div');
+      heart.textContent = '💖';
+      heart.style.position = 'absolute';
+      heart.style.left = Math.random()*100 + 'vw';
+      heart.style.bottom = '-40px';
+      heart.style.fontSize = (12 + Math.random()*20) + 'px';
+      heart.style.opacity = 0.85;
+      heart.style.transition = 'transform 6s linear, opacity 6s linear';
+      heartsContainer.appendChild(heart);
+      // trigger animation
+      requestAnimationFrame(()=> {
+        heart.style.transform = `translateY(-110vh) translateX(${(Math.random()-0.5)*20}vw)`;
+        heart.style.opacity = 0;
+      });
+      setTimeout(()=> heart.remove(), 6500);
+    }
+    
+    // create hearts occasionally for soft effect
+    const heartsInterval = setInterval(()=> {
+      if(Math.random() < 0.6) createHeart();
+    }, 800);
+
+    // Pausar SÓLO los corazones en móviles
+    if(window.innerWidth < 600){
+      clearInterval(heartsInterval); // Detiene solo el intervalo de los corazones
+    }
+    
+    // Animación al hacer scroll
+    const elements = document.querySelectorAll('.fade-in');
+    if (elements.length > 0) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      });
+      elements.forEach(el => observer.observe(el));
+    }
+
+    // ===== (Lógica de Gemini API eliminada) =====
+
+  </script>
 </body>
 </html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Invitación - Patricia Ramírez Roque</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <header class="hero" style="background-image: url('img/fondo.jpg');">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>🎉 Invitación Especial 🎉</h1>
+            <h2>Patricia Ramírez Roque</h2>
+            <p class="sub">"Para la mejor mamá"</p>
+            <p class="when"><strong>📅 Domingo 16 de noviembre de 2025 — 6:00 PM</strong></p>
+            <p class="where">📍 Avenida Emiliano Zapata, Colonia Concepción la Cruz 11, Concepción la Cruz, 72197 San Bernardino Tlaxcalancingo, Pue.</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="countdown">
+            <h3>Cuenta regresiva</h3>
+            <div id="countdown">
+                <div><span id="dias">--</span><small>días</small></div>
+                <div><span id="horas">--</span><small>horas</small></div>
+                <div><span id="minutos">--</span><small>minutos</small></div>
+                <div><span id="segundos">--</span><small>segundos</small></div>
+            </div>
+        </section>
+
+        <section class="rsvp">
+            <h3>Confirma tu asistencia (solo local)</h3>
+            <form id="rsvpForm">
+                <label>Tu nombre:<input type="text" id="nombreInput" required></label>
+                <label>¿Vas a asistir?
+                    <select id="asistencia">
+                        <option value="si">Sí</option>
+                        <option value="no">No</option>
+                        <option value="talvez">Tal vez</option>
+                    </select>
+                </label>
+                <label>Mensaje (opcional):<textarea id="mensajeInput" rows="3"></textarea></label>
+                <button type="submit">Enviar</button>
+            </form>
+            <div id="gracias" class="hidden">
+                <h4>¡Gracias! Tu respuesta se guardó localmente en tu navegador.</h4>
+                <button id="reset">Enviar otra respuesta</button>
+            </div>
+            <div class="saved-list">
+                <h4>Respuestas guardadas (local)</h4>
+                <ul id="listaRespuestas"></ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="player">
+            <p>Música de fondo (reemplaza 'musica.mp3' por tu canción preferida):</p>
+            <audio id="player" controls loop>
+                <source src="musica.mp3" />
+                Tu navegador no soporta audio.
+            </audio>
+            <label><input type="checkbox" id="autoplay"> Auto-reproducir al abrir</label>
+        </div>
+        <p class="credit">Versión para GitHub Pages — sin PHP, 100% HTML + CSS + JS</p>
+    </footer>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
